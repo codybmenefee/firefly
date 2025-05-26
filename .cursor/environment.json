@@ -10,10 +10,10 @@
     "cd supabase && npm install"
   ],
   "startup": [
-    "supabase start",
     "cd frontend && npm start"
   ],
   "test": [
     "cd frontend && npm test"
-  ]
-} 
+  ],
+  "start": "cd frontend && npm start"
+}
