@@ -24,21 +24,15 @@ See `/docs/MVP/setup_guide.md` for full details.
 git clone <repo-url>
 cd firefly
 
-# 2. Install dependencies
-cd frontend && npm install
-cd ../supabase && npm install
+# 2. Run setup script (installs dependencies and creates .env files)
+./scripts/setup.sh
 
-# 3. Copy environment variables
-cp frontend/.env.example frontend/.env
-cp supabase/.env.example supabase/.env
-# Fill in required values from your remote Supabase project settings
+# 3. Fill in environment variables
+# Edit frontend/.env and supabase/.env with your remote Supabase project values
 
-# 4. (Optional) Supabase CLI login
-supabase login
-# Follow the prompt to connect your CLI to your remote Supabase project
-
-# 5. Start frontend
-cd frontend && npm start
+# 4. Start development
+npm run dev:frontend   # Start frontend on http://localhost:5173
+npm run dev:functions  # Start Edge Functions locally (requires Supabase CLI)
 ```
 
 ---
@@ -58,8 +52,10 @@ firefly/
 - **MVP Features:** `/docs/MVP/mvp_features.md`
 - **API Endpoints:** `/docs/MVP/api_endpoints.md`
 - **Setup Guide:** `/docs/MVP/setup_guide.md`
+- **Deployment Guide:** `/docs/MVP/deployment.md`
 - **Architecture:** `/docs/architecture.md`, `/docs/MVP/architecture.md`
 - **Tasks:** `/docs/tasks.md`, `/docs/MVP/tasks.md`
+- **Quick Reference:** `/scripts/quick-reference.md`
 
 ---
 
@@ -83,15 +79,21 @@ Agents should follow the staged plan in `/docs/MVP/tasks.md` and verify end-to-e
 ---
 
 ## Useful Scripts
-- `cd frontend && npm start` – Start frontend
-- `cd frontend && npm test` – Run frontend tests
-- `supabase functions deploy <function>` – Deploy Edge Functions to remote Supabase
+Root package.json includes helpful scripts:
+- `npm run setup` – Initial project setup
+- `npm run install:all` – Install all dependencies
+- `npm run dev:frontend` – Start frontend dev server
+- `npm run dev:functions` – Start Edge Functions locally
+- `npm run test:frontend` – Run frontend tests
+- `npm run test:env` – Check environment variables
+- `npm run deploy:functions` – Deploy all Edge Functions
 
 ---
 
 ## Deployment
-- Deploy frontend to Vercel
-- Deploy Edge Functions via Supabase CLI to your remote project
+See `/docs/MVP/deployment.md` for detailed deployment instructions.
+- Frontend: Deploy to Vercel
+- Backend: Deploy Edge Functions via Supabase CLI
 
 ---
 
