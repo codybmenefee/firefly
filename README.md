@@ -5,6 +5,105 @@ A community-driven platform for tracking, sharing, and promoting firefly conserv
 
 ---
 
+## MVP Features
+See `/docs/MVP/mvp_features.md` for the full MVP feature list.
+
+- User authentication (Supabase)
+- Sighting form (date, time, count, optional photo)
+- Map view (Mapbox, anonymized locations)
+- Basic dashboard (user's sightings)
+- Responsive mobile-first design
+
+---
+
+## Getting Started – Quick Setup
+See `/docs/MVP/setup_guide.md` for full details.
+
+```sh
+# 1. Clone the repo
+git clone <repo-url>
+cd firefly
+
+# 2. Install dependencies
+cd frontend && npm install
+cd ../supabase && npm install
+
+# 3. Copy environment variables
+cp frontend/.env.example frontend/.env
+cp supabase/.env.example supabase/.env
+# Fill in required values from your remote Supabase project settings
+
+# 4. (Optional) Supabase CLI login
+supabase login
+# Follow the prompt to connect your CLI to your remote Supabase project
+
+# 5. Start frontend
+cd frontend && npm start
+```
+
+---
+
+## Directory Structure
+```
+firefly/
+  frontend/      # Vite + React + Tailwind app
+  supabase/      # Supabase project & Edge Functions
+  docs/          # All documentation
+  README.md
+```
+
+---
+
+## Documentation
+- **MVP Features:** `/docs/MVP/mvp_features.md`
+- **API Endpoints:** `/docs/MVP/api_endpoints.md`
+- **Setup Guide:** `/docs/MVP/setup_guide.md`
+- **Architecture:** `/docs/architecture.md`, `/docs/MVP/architecture.md`
+- **Tasks:** `/docs/tasks.md`, `/docs/MVP/tasks.md`
+
+---
+
+## Environment Variables
+- `frontend/.env.example` contains:
+  - `VITE_SUPABASE_URL`
+  - `VITE_SUPABASE_ANON_KEY`
+  - `VITE_MAPBOX_TOKEN`
+- `supabase/.env.example` contains:
+  - `SUPABASE_URL`
+  - `SUPABASE_SERVICE_ROLE_KEY`
+  - `MAPBOX_TOKEN`
+  - `OPENAI_API_KEY`
+- **All environment variables must be set to your remote Supabase project values.**
+
+---
+
+## For Agents: Staged, Test-Driven MVP Plan
+Agents should follow the staged plan in `/docs/MVP/tasks.md` and verify end-to-end functionality at each step before proceeding.
+
+---
+
+## Useful Scripts
+- `cd frontend && npm start` – Start frontend
+- `cd frontend && npm test` – Run frontend tests
+- `supabase functions deploy <function>` – Deploy Edge Functions to remote Supabase
+
+---
+
+## Deployment
+- Deploy frontend to Vercel
+- Deploy Edge Functions via Supabase CLI to your remote project
+
+---
+
+**Your goal:**
+Get the MVP up and running, deployed, and ready for friends and family to use. Iterate quickly, keep code modular and well-commented, and update documentation as you go.
+
+---
+
+## Notes
+- **No local database or Docker required.** All data is stored in your remote Supabase project.
+- Ensure your `.env` files use the remote Supabase URL and keys.
+
 ## Current State
 - **Documentation:** All architecture, tasks, and onboarding docs are up to date and located in `/docs/`.
 - **Tech Stack:**
@@ -122,18 +221,4 @@ Iterate quickly, keep code modular and well-commented, and update documentation 
 
 ---
 
-**You're set up for success—good luck, and let's light up the world for fireflies!**
-
-## Environment Variables
-
-**Note:** Due to project settings, `.env` and `.env.example` files are not accessible or editable via automation. However, you should assume that `.env.example` files exist in both the `frontend` and `supabase` directories. Copy these to `.env` and fill in the required values before running the app.
-
-- `frontend/.env.example` contains:
-  - `VITE_SUPABASE_URL`
-  - `VITE_SUPABASE_ANON_KEY`
-  - `VITE_MAPBOX_TOKEN`
-- `supabase/.env.example` contains:
-  - `SUPABASE_URL`
-  - `SUPABASE_SERVICE_ROLE_KEY`
-  - `MAPBOX_TOKEN`
-  - `OPENAI_API_KEY` 
+**You're set up for success—good luck, and let's light up the world for fireflies!** 

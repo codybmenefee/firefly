@@ -1,0 +1,19 @@
+{
+  "base": {
+    "image": "node:20-bullseye",
+    "setup": [
+      "npm install -g supabase"
+    ]
+  },
+  "install": [
+    "cd frontend && npm install",
+    "cd supabase && npm install"
+  ],
+  "startup": [
+    "supabase start",
+    "cd frontend && npm start"
+  ],
+  "test": [
+    "cd frontend && npm test"
+  ]
+} 
