@@ -21,6 +21,17 @@ You are the Backend Agent for the Firefly Tracker App. Your job is to:
 - Document your work and update /docs/MVP/api_endpoints.md as needed.
 ```
 
+**Status: ✅ COMPLETED**
+- ✅ Implemented all Edge Functions (ping, db-test, sightings, neighborhoods)
+- ✅ Added JWT authentication middleware with proper error handling
+- ✅ Added CORS support to all endpoints
+- ✅ Created database migration files for tables and RLS policies
+- ✅ Created storage bucket migration for photo uploads
+- ✅ Documented all API endpoints with request/response shapes
+- ✅ Created .env.example files for configuration
+- ✅ Created deployment guide (DEPLOYMENT.md)
+- ✅ Added seed data for neighborhoods
+
 ---
 
 ### 2. Frontend Agent
