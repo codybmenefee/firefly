@@ -1,58 +1,42 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import { AuthProvider } from './contexts/AuthContext'
+import Layout from './components/Layout'
+import Home from './components/Home'
+import Login from './components/Auth/Login'
+import SignUp from './components/Auth/SignUp'
+import Dashboard from './components/Dashboard'
+import SightingForm from './components/SightingForm'
+import ProtectedRoute from './components/ProtectedRoute'
 
 function App() {
-  const [count, setCount] = useState(0)
-  const [pingResult, setPingResult] = useState(null)
-
-  // Debug log to verify anon key
-  console.log('Anon Key in frontend:', import.meta.env.VITE_SUPABASE_ANON_KEY);
-
-  const handlePing = async () => {
-    try {
-      const res = await fetch('http://localhost:54321/functions/v1/ping', {
-        headers: {
-          Authorization: `Bearer ${import.meta.env.VITE_SUPABASE_ANON_KEY}`
-        }
-      });
-      const data = await res.json();
-      setPingResult(data.message);
-    } catch (err) {
-      setPingResult('Error contacting API');
-    }
-  }
-
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <button style={{ marginLeft: 8 }} onClick={handlePing}>
-          Ping API
-        </button>
-        {pingResult && (
-          <p>Ping result: {pingResult}</p>
-        )}
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <Router>
+      <AuthProvider>
+        <Routes>
+          <Route path="/" element={<Layout />}>
+            <Route index element={<Home />} />
+            <Route path="login" element={<Login />} />
+            <Route path="signup" element={<SignUp />} />
+            <Route
+              path="dashboard"
+              element={
+                <ProtectedRoute>
+                  <Dashboard />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="sighting/new"
+              element={
+                <ProtectedRoute>
+                  <SightingForm />
+                </ProtectedRoute>
+              }
+            />
+          </Route>
+        </Routes>
+      </AuthProvider>
+    </Router>
   )
 }
 

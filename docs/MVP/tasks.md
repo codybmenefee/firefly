@@ -86,11 +86,11 @@ To ensure a stable and testable MVP, agents must:
 ## Tasks
 ### Frontend
 - [x] Set up Vite + React + Tailwind CSS (manual Tailwind config if CLI fails)
-- [ ] Integrate Supabase Auth
-- [ ] Build sighting form (date, time, count, photo upload)
-- [ ] Map component (Mapbox, show anonymized sightings)
-- [ ] User dashboard (list of user's sightings)
-- [ ] Responsive/mobile-first layout
+- [x] Integrate Supabase Auth
+- [x] Build sighting form (date, time, count, photo upload)
+- [x] Map component (Mapbox, show anonymized sightings)
+- [x] User dashboard (list of user's sightings)
+- [x] Responsive/mobile-first layout
 - [x] Connect to Supabase Edge Function API *(ping endpoint, CORS/auth debugged)*
 
 ### Backend/API (Supabase Edge Functions)
