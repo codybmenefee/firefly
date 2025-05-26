@@ -1,6 +1,22 @@
 {
+  "name": "firefly-tracker",
+  "version": "1.0.0",
+  "description": "Community-driven platform for tracking and sharing firefly sightings",
+  "private": true,
+  "scripts": {
+    "install:all": "npm install && cd frontend && npm install && cd ../supabase && npm install",
+    "dev:frontend": "cd frontend && npm run dev",
+    "dev:functions": "cd supabase && supabase functions serve",
+    "test:frontend": "cd frontend && npm test",
+    "test:env": "cd frontend && node test-env.js",
+    "deploy:functions": "cd supabase && supabase functions deploy --all",
+    "setup": "npm run install:all && echo 'Remember to copy .env.example files to .env and fill in your Supabase project values!'"
+  },
   "devDependencies": {
     "@supabase/supabase-js": "^2.49.8",
     "@tailwindcss/postcss": "^4.1.7"
+  },
+  "engines": {
+    "node": ">=18.0.0"
   }
 }

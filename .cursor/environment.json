@@ -1,4 +1,57 @@
 {
-  "snapshot": "snapshot-20250526-b83def10-569e-43c5-93c9-22cfec1179a2",
+  "project": "Firefly Tracker App",
+  "description": "Community-driven platform for tracking and sharing firefly sightings",
+  "agents": {
+    "backend": {
+      "role": "Backend Agent",
+      "workspace": "supabase/",
+      "responsibilities": [
+        "Implement and deploy Supabase Edge Functions",
+        "Set up database tables and storage buckets",
+        "Ensure authentication middleware on protected endpoints"
+      ]
+    },
+    "frontend": {
+      "role": "Frontend Agent", 
+      "workspace": "frontend/",
+      "responsibilities": [
+        "Build UI components and pages for MVP features",
+        "Integrate Supabase Auth and API endpoints",
+        "Implement responsive mobile-first design"
+      ]
+    },
+    "devops": {
+      "role": "DevOps/Workspace Agent",
+      "workspace": ".",
+      "responsibilities": [
+        "Maintain environment variables and configuration",
+        "Keep documentation up to date",
+        "Ensure no local DB/Docker references"
+      ]
+    }
+  },
+  "environment": {
+    "remote_only": true,
+    "no_local_db": true,
+    "no_docker": true,
+    "supabase_project": "remote",
+    "deployment": {
+      "frontend": "vercel",
+      "backend": "supabase-edge-functions"
+    }
+  },
+  "mvp_stages": [
+    "hello-world-connectivity",
+    "database-connectivity",
+    "basic-auth-flow",
+    "mvp-sighting-flow",
+    "full-mvp-features"
+  ],
+  "key_files": {
+    "api_endpoints": "/docs/MVP/api_endpoints.md",
+    "mvp_features": "/docs/MVP/mvp_features.md",
+    "architecture": "/docs/MVP/architecture.md",
+    "tasks": "/docs/MVP/tasks.md"
+  },
   "terminals": []
 }
